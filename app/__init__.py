@@ -5,13 +5,13 @@ from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
 from flask_jwt_extended import JWTManager
 from flask_bcrypt import Bcrypt
-from flask_login import LoginManager  # Added import
+from flask_login import LoginManager
 from app.config import config
 
 db = SQLAlchemy()
 jwt = JWTManager()
 bcrypt = Bcrypt()
-login_manager = LoginManager()       # Created instance
+login_manager = LoginManager()
 
 def setup_logging(app):
     if not os.path.exists('logs'):
@@ -70,6 +70,9 @@ def create_app(config_name=None):
     app.register_blueprint(api_bp, url_prefix='/api/v1')
 
     app.logger.info('SecureCampus Startup Complete.')
+
+    # Auto-create database tables on startup
     with app.app_context():
-    db.create_all()
+        db.create_all()
+
     return app
