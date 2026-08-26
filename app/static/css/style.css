@@ -1,0 +1,92 @@
+:root {
+  --bg-primary: #f8fafc;
+  --bg-surface: #ffffff;
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --border-color: #e2e8f0;
+  --sidebar-width: 260px;
+  --brand-primary: #4f46e5;
+  --brand-hover: #4338ca;
+}
+
+[data-theme="dark"] {
+  --bg-primary: #0f172a;
+  --bg-surface: #1e293b;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --border-color: #334155;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-main);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Sidebar Styling */
+#sidebar-wrapper {
+  min-height: 100vh;
+  width: var(--sidebar-width);
+  background-color: var(--bg-surface);
+  border-right: 1px solid var(--border-color);
+  transition: margin 0.25s ease-out;
+}
+
+#page-content-wrapper {
+  width: 100%;
+}
+
+.card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: 0.75rem;
+}
+
+/* Page Preloader */
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--bg-primary);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.5s ease;
+}
+
+/* Sidebar Toggle Functionality */
+#wrapper.toggled #sidebar-wrapper {
+    margin-left: -250px; /* Adjust this value to match your sidebar's width */
+    transition: margin 0.25s ease-out;
+}
+
+#sidebar-wrapper {
+    transition: margin 0.25s ease-out;
+}
+
+/* Sidebar Layout & Toggle Animation */
+#wrapper {
+    display: flex;
+    overflow-x: hidden;
+}
+
+#sidebar-wrapper {
+    min-width: 250px;
+    max-width: 250px;
+    min-height: 100vh;
+    margin-left: 0;
+    transition: margin 0.25s ease-out;
+}
+
+#page-content-wrapper {
+    width: 100%;
+}
+
+/* Class applied by JavaScript when clicking #menu-toggle */
+#wrapper.toggled #sidebar-wrapper {
+    margin-left: -250px;
+}
